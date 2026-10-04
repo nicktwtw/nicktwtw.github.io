@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>免費 eSIM 優惠清單</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f4f7f6;
+      --surface: #ffffff;
+      --surface-2: #eaf0ee;
+      --text: #10201d;
+      --muted: #536560;
+      --line: #c8d4d0;
+      --accent: #007a66;
+      --accent-strong: #005f50;
+      --accent-soft: #d8f0ea;
+      --orange: #d9632c;
+      --orange-soft: #fee7db;
+      --yellow-soft: #fff1c7;
+      --yellow-text: #775100;
+      --danger: #a52f25;
+      --danger-bg: #fde9e6;
+      --danger-line: #d96b5d;
+      --shadow: 0 12px 34px rgba(15, 39, 33, .08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0c1413;
+        --surface: #131f1d;
+        --surface-2: #1a2a27;
+        --text: #edf7f4;
+        --muted: #aebfba;
+        --line: #314540;
+        --accent: #52d1b5;
+        --accent-strong: #82e6d0;
+        --accent-soft: #173e35;
+        --orange: #ff9865;
+        --orange-soft: #49291f;
+        --yellow-soft: #3b3218;
+        --yellow-text: #ffe08b;
+        --danger: #ff9b88;
+        --danger-bg: #3f201d;
+        --danger-line: #bd5c50;
+        --shadow: 0 16px 44px rgba(0, 0, 0, .26);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Noto Sans TC", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    a { color: inherit; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(54px, 7vw, 92px) 0 42px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, transparent 49.8%, color-mix(in srgb, var(--line) 45%, transparent) 50%, transparent 50.2%),
+        linear-gradient(0deg, transparent 49.8%, color-mix(in srgb, var(--line) 35%, transparent) 50%, transparent 50.2%);
+      background-size: 44px 44px;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border: 78px solid var(--accent-soft);
+      border-radius: 50%;
+      right: -150px;
+      top: -160px;
+      opacity: .86;
+      pointer-events: none;
+    }
+    .date-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 10px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      font: 600 12px/1.2 "IBM Plex Mono", monospace;
+      color: var(--muted);
+      letter-spacing: .03em;
+    }
+    .date-line::before { content: ""; width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
+    h1 {
+      max-width: 850px;
+      margin: 20px 0 16px;
+      font-size: clamp(38px, 7vw, 76px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+    h1 .free { color: var(--accent); }
+    h1 .discount { color: var(--orange); }
+    .intro {
+      max-width: 780px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 20px);
+    }
+    .intro strong { color: var(--text); }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 34px;
+      align-items: end;
+    }
+    .quick-pick {
+      position: relative;
+      z-index: 1;
+      background: var(--text);
+      color: var(--bg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .quick-pick p { margin: 0; color: color-mix(in srgb, var(--bg) 76%, transparent); }
+    .quick-pick strong { display: block; margin-bottom: 8px; font-size: 18px; color: var(--bg); }
+    .quick-pick .sum {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 18px 0 2px;
+      font: 600 13px/1.4 "IBM Plex Mono", monospace;
+    }
+    .quick-pick .sum b { font-size: 36px; color: var(--accent-strong); }
+    @media (prefers-color-scheme: dark) {
+      .quick-pick { background: #dff6f0; color: #15302a; }
+      .quick-pick strong, .quick-pick p { color: #15302a; }
+      .quick-pick .sum b { color: #006e5d; }
+    }
+
+    .controls {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--bg) 94%, transparent);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .control-inner { display: flex; gap: 8px; padding: 12px 0; overflow: hidden; }
+    .filter {
+      flex: 0 0 auto;
+      min-height: 40px;
+      padding: 8px 15px;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .filter:hover { color: var(--text); border-color: var(--text); }
+    .filter[aria-pressed="true"] { color: white; background: var(--accent-strong); border-color: var(--accent-strong); }
+    @media (prefers-color-scheme: dark) { .filter[aria-pressed="true"] { color: #08251f; } }
+
+    main { padding: 42px 0 74px; }
+    .section-head { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: end; margin-bottom: 20px; }
+    h2 { margin: 0; font-size: clamp(26px, 4vw, 38px); line-height: 1.16; letter-spacing: -.035em; }
+    .section-note { margin: 0; color: var(--muted); max-width: 580px; }
+    .count { font: 600 13px "IBM Plex Mono", monospace; color: var(--muted); }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 28px;
+      padding: 15px 17px;
+      background: var(--yellow-soft);
+      color: var(--yellow-text);
+      border-left: 4px solid #d6a100;
+    }
+    .alert svg { width: 20px; margin-top: 2px; }
+    .alert p { margin: 0; }
+    .fraud-warning {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-content: start;
+      min-width: 0;
+      padding: 24px;
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 2px solid var(--danger-line);
+    }
+    .fraud-warning svg { width: 28px; margin-top: 2px; }
+    .fraud-warning h3 { margin: 6px 0 10px; color: var(--text); font-size: 24px; line-height: 1.2; }
+    .fraud-warning p { margin: 0; color: var(--text); }
+    .fraud-warning strong { color: var(--danger); }
+    .fraud-label { font: 600 12px/1.2 "IBM Plex Mono", monospace; letter-spacing: .04em; }
+
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      min-width: 0;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+    }
+    .card.featured { border-top: 5px solid var(--accent); padding-top: 20px; }
+    .card.discount-card { border-top: 5px solid var(--orange); padding-top: 20px; }
+    .card.expired { border-top-color: var(--danger); background: color-mix(in srgb, var(--danger-bg) 46%, var(--surface)); }
+    .card[data-hidden="true"] { display: none; }
+    .card-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+    .rank { font: 600 12px/1 "IBM Plex Mono", monospace; color: var(--muted); }
+    .trust {
+      padding: 5px 8px;
+      border-radius: 3px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .trust.caution { background: var(--yellow-soft); color: var(--yellow-text); }
+    .trust.paid { background: var(--orange-soft); color: var(--orange); }
+    .trust.unverified { background: color-mix(in srgb, var(--danger) 14%, var(--surface)); color: var(--danger); }
+    .trust.expired { background: var(--danger); color: #fff; }
+    .expired-code { align-self: center; color: var(--danger); font-size: 13px; font-weight: 800; }
+    .batch { margin-bottom: 54px; }
+    .batch + .batch { padding-top: 44px; border-top: 1px solid var(--line); }
+    .batch-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--accent-strong);
+      font: 600 12px/1.2 "IBM Plex Mono", monospace;
+      letter-spacing: .04em;
+    }
+    .candidate-head { margin-top: 34px; }
+    .candidate-head .batch-label { color: var(--danger); }
+    .paid-section { padding: 44px 0; background: color-mix(in srgb, var(--orange-soft) 38%, transparent); }
+    .paid-head .batch-label { color: var(--orange); }
+    .paid-head h2 { color: var(--text); }
+    .group-block[hidden] { display: none; }
+    .card h3 { margin: 12px 0 3px; font-size: 24px; line-height: 1.2; letter-spacing: -.025em; }
+    .offer { margin: 0 0 16px; font-size: 18px; font-weight: 700; }
+    .offer em { color: var(--accent); font-style: normal; }
+    .discount-card .offer em { color: var(--orange); }
+    .facts { display: grid; gap: 10px; margin: 0 0 18px; }
+    .fact { display: grid; grid-template-columns: 76px 1fr; gap: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+    .fact dt { color: var(--muted); font-size: 13px; }
+    .fact dd { min-width: 0; margin: 0; font-size: 14px; }
+    .code-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 9px; }
+    code {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 9px;
+      color: var(--text);
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      font: 600 13px "IBM Plex Mono", monospace;
+      overflow-wrap: anywhere;
+    }
+    .copy {
+      min-height: 32px;
+      padding: 5px 10px;
+      border: 0;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      color: var(--accent-strong);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .copy:hover { background: var(--accent-soft); }
+    .note {
+      align-self: end;
+      margin: 0 0 17px;
+      padding: 11px 12px;
+      background: var(--surface-2);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .note.warning { background: var(--yellow-soft); color: var(--yellow-text); }
+    .note.urgent {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border-left: 4px solid var(--danger-line);
+      font-weight: 800;
+    }
+    .source-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; border-top: 1px solid var(--line); padding-top: 14px; }
+    .source-row span { color: var(--muted); font: 500 11px "IBM Plex Mono", monospace; }
+    .source {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--accent-strong);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+    .source svg { width: 14px; flex: 0 0 auto; }
+
+    .strategy {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .strategy-title { padding: 30px; background: var(--accent-soft); }
+    .strategy-title h2 { margin-bottom: 12px; }
+    .strategy-title p { margin: 0; color: var(--muted); }
+    .steps { margin: 0; padding: 26px 28px 26px 62px; }
+    .steps li { padding: 7px 0 7px 5px; }
+    .steps li::marker { color: var(--accent); font: 600 14px "IBM Plex Mono", monospace; }
+    .install {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-top: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      background: var(--surface-2);
+    }
+    .install b { color: var(--text); }
+    .install svg { flex: 0 0 auto; width: 24px; color: var(--accent); }
+    footer { padding: 28px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    footer p { margin: 0; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 50;
+      transform: translate(-50%, 20px);
+      padding: 10px 14px;
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 780px) {
+      .wrap { width: min(100% - 28px, 720px); }
+      .hero { padding-top: 42px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .quick-pick { padding: 20px; }
+      .control-inner { flex-wrap: wrap; overflow: visible; }
+      .control-inner::-webkit-scrollbar { display: none; }
+      main { padding-top: 30px; }
+      .section-head { grid-template-columns: 1fr; gap: 6px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+      .strategy { grid-template-columns: 1fr; }
+      .strategy-title { padding: 24px; }
+      .steps { padding: 20px 22px 22px 50px; }
+    }
+
+    @media (max-width: 430px) {
+      h1 { font-size: 40px; }
+      .fact { grid-template-columns: 64px 1fr; gap: 8px; }
+      .card h3 { font-size: 22px; }
+      .offer { font-size: 17px; }
+      .source-row { align-items: flex-start; flex-direction: column; gap: 7px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .toast { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="date-line">資料快照 · 2026-10-03</div>
+        <h1><span class="free">16 個真正免費方案</span><br><span class="discount">付費折扣另列，不混算</span></h1>
+        <p class="intro"><strong>免費＝領取時 0 元、不必購買付費方案。</strong> 另有 9 個待實測選項與 10 個付費折扣，全部分區呈現且不計入免費數量。</p>
+      </div>
+      <aside class="quick-pick" aria-label="首選組合">
+        <strong>零成本先看</strong>
+        <p>Nomad、Roami 與 Firsty 不需先買付費方案</p>
+        <div class="sum"><b>0 元</b><span>才列入免費數量</span></div>
+        <p>凡須購買、只打折或購買後才送流量，都已移到付費區。</p>
+      </aside>
+    </div>
+  </header>
+
+  <nav class="controls" aria-label="篩選優惠類型">
+    <div class="wrap control-inner">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">全部 36</button>
+      <button class="filter" type="button" data-filter="free" aria-pressed="false">真正免費 16</button>
+      <button class="filter" type="button" data-filter="candidate" aria-pressed="false">待實測 9</button>
+      <button class="filter" type="button" data-filter="discount" aria-pressed="false">付費折扣 10</button>
+      <button class="filter" type="button" data-filter="expired" aria-pressed="false">已失效 1</button>
+      <button class="filter" type="button" data-filter="japan" aria-pressed="false">日本／亞洲</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section aria-labelledby="offers-heading">
+      <div class="section-head">
+        <div>
+          <h2 id="offers-heading">先分清楚：免費、待實測、付費</h2>
+          <p class="section-note">統計只把領取時不需付款的方案算作免費；折扣碼、推薦金與購買後贈送流量一律另列。</p>
+        </div>
+        <div class="count" id="resultCount" aria-live="polite">顯示 36 個選項</div>
+      </div>
+
+      <div class="alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20h15.8a2 2 0 0 0 1.7-2.5L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        <p><strong>判斷標準：</strong>領取過程只要必須付款，就不算免費。結帳頁不是 0 元、要求先買方案，或只是幾％折扣時，請直接看「付費折扣碼」區。</p>
+      </div>
+
+      <div class="batch group-block" data-group="free">
+        <div class="section-head">
+          <div>
+            <span class="batch-label">真正免費 · 0 元取得</span>
+            <h2>真正免費 eSIM／流量方案</h2>
+            <p class="section-note">共 16 個。領取 eSIM 或流量時不必購買付費方案；卡別、航班或地區資格仍須符合。暫時預授權會另行標示，不等於購買。</p>
+          </div>
+          <div class="count">16 個免費方案</div>
+        </div>
+        <div class="cards">
+        <article class="card featured" data-category="free">
+          <div class="card-top"><span class="rank">使用者實測 / 免費</span><span class="trust">實測有效</span></div>
+          <h3>Red Bull MOBILE eSIM</h3>
+          <p class="offer"><em>新戶 100MB＋1GB 或倫敦 2.5GB</em> · 兩組碼二選一</p>
+          <dl class="facts">
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>TRAVELDEALZ</code><button class="copy" type="button" data-copy="TRAVELDEALZ">複製</button><code>GOCITYLONDON26</code><button class="copy" type="button" data-copy="GOCITYLONDON26">複製</button></div></dd></div>
+            <div class="fact"><dt>怎麼領</dt><dd>下載 Red Bull MOBILE App，註冊新帳號後前往 Profile → Settings → Add a Promocode，輸入代碼並點選 Activate。</dd></div>
+            <div class="fact"><dt>最後一步</dt><dd>回到 Data Plans 分頁，選擇顯示為免費的流量包。</dd></div>
+            <div class="fact"><dt>效期</dt><dd>兌換後 1 年內啟用；啟用後 1GB 有效 1 個月。</dd></div>
+            <div class="fact"><dt>涵蓋地區</dt><dd>100+ 國，含日本、台灣、韓國、香港、泰國等。</dd></div>
+            <div class="fact"><dt>資格</dt><dd>僅限新客戶；去年已領過者不能再次領取。領取時不需購買付費方案。</dd></div>
+            <div class="fact"><dt>不適用</dt><dd>俄羅斯、印尼、沙烏地阿拉伯、阿曼、埃及、印度、伊拉克不能使用這 1GB。</dd></div>
+            <div class="fact"><dt>代碼限制</dt><dd>兩組碼都有效可領，但僅限新戶二選一、不可疊加：<code>TRAVELDEALZ</code> 可領 1GB，倫敦碼 <code>GOCITYLONDON26</code> 可領 2.5GB。已使用其中一組後，就不能再使用另一組。</dd></div>
+            <div class="fact"><dt>Go City 兌換</dt><dd>到 Go City App 的「My Pass」找到通行證號碼 → 前往 Red Bull MOBILE Go City 專屬頁面輸入號碼 → 取得該城市專屬優惠碼（例如倫敦為 <code>GOCITYLONDON26</code>）→ 下載 Red Bull MOBILE eSIM App → 建立新帳號並安裝 eSIM → 在 Settings 輸入優惠碼啟用 2.5GB → 到手機設定開啟數據漫遊。限 Red Bull MOBILE eSIM 新戶及相容裝置。Go City 通行證為付費商品，依本頁標準不列入免費方案。</dd></div>
+            <div class="fact"><dt>eSIM 設定檔</dt><dd>只需安裝一次，之後可直接加購其他方案。</dd></div>
+          </dl>
+          <p class="note">兩組新戶碼都有效可領，但只能擇一：<code>TRAVELDEALZ</code> 為 1GB、<code>GOCITYLONDON26</code> 為倫敦 2.5GB。使用者 2026-10-03 實測 1GB 碼有效；Red Bull 表示該碼偶爾可能兌換失敗，可再嘗試幾次。</p>
+          <div class="source-row"><span>狀態</span><span>使用者 2026-10-03 實測有效</span><a class="source" href="https://travel-dealz.com/coupon/red-bull-mobile/" target="_blank" rel="noopener">Travel-Dealz 優惠頁</a><a class="source" href="https://esim.redbullmobile.com/go-city/" target="_blank" rel="noopener">Go City 專屬頁面</a></div>
+        </article>
+        <article class="card featured" data-category="free">
+          <div class="card-top"><span class="rank">限量回歸 / 免費</span><span class="trust caution">10/6 限量開放</span></div>
+          <h3>Jetpac Eterna</h3>
+          <p class="offer"><em>終身免費旅遊 eSIM</em> · 10/6 開放、限量、要搶</p>
+          <dl class="facts">
+            <div class="fact"><dt>怎麼領</dt><dd>2026/10/6 限時開放後領取；只需領一次，Eterna 權益可永久保留並用於未來符合資格的國際旅程。</dd></div>
+            <div class="fact"><dt>免費流量</dt><dd>每次符合資格的旅程提供 100MB 免費數據。</dd></div>
+            <div class="fact"><dt>指定 App</dt><dd>WhatsApp、Google Maps、Uber、Grab 整趟旅程可無限使用；即使 100MB 用完，這些 App 仍可繼續使用。</dd></div>
+            <div class="fact"><dt>需要更多</dt><dd>額外一般流量可透過 Jetpac 加購；加購不是保留 Eterna 權益的必要條件。</dd></div>
+            <div class="fact"><dt>名額</dt><dd>本次只釋出有限名額且開放時間短；上一波首日超過 11,000 人領取。</dd></div>
+          </dl>
+          <p class="note urgent">10/6 開放、限量、要搶。官方未公布本次確切名額與截止時間，開放後建議優先領取。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://news.marketersmedia.com/jetpac-eterna-returns-in-a-limited-time-drop-after-11000-day-one-redemptions/89205028" target="_blank" rel="noopener">官方新聞稿 · MarketersMEDIA · 2026/10/2</a></div>
+        </article>
+        <article class="card featured" data-category="free japan">
+          <div class="card-top"><span class="rank">02 / 免費</span><span class="trust">多源一致</span></div>
+          <h3>Nomad eSIM</h3>
+          <p class="offer"><em>1GB</em> · 3 天</p>
+          <dl class="facts">
+            <div class="fact"><dt>怎麼領</dt><dd>下載 App、註冊後直接領取試用並選目的地，不需輸入碼。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>48 國，含日本、台灣、韓國、香港、新加坡與多個東南亞國家。</dd></div>
+            <div class="fact"><dt>資格</dt><dd>新使用者每人 1 次；免信用卡；純流量，可分享熱點。</dd></div>
+            <div class="fact"><dt>期限</dt><dd>領取後 15 天內啟用；逾期會自動啟用。</dd></div>
+          </dl>
+          <p class="note">短程旅行最容易使用；請在接近出發日再領，避免 15 天啟用期限提前開始。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://alertify.eu/nomad-esim-free-trial/" target="_blank" rel="noopener">Alertify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="source" href="https://best-japanese.co.uk/best-esim-for-japan/" target="_blank" rel="noopener">Best Japanese<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card featured" data-category="free second japan">
+            <div class="card-top"><span class="rank">R2-01 / 免費</span><span class="trust">多方已驗證</span></div>
+            <h3>Firsty Free</h3>
+            <p class="offer"><em>無限量低速</em> · 每 59 分鐘看廣告續用</p>
+            <dl class="facts">
+              <div class="fact"><dt>速度</dt><dd>256 Kbps–1 Mbps；適合地圖、訊息、Email 與叫車，不支援熱點。</dd></div>
+              <div class="fact"><dt>怎麼領</dt><dd>下載 Firsty App，以電話或 email 註冊並安裝 eSIM；無代碼。</dd></div>
+              <div class="fact"><dt>可用地區</dt><dd>免費層涵蓋北美、歐洲與 APAC；日本在列。</dd></div>
+              <div class="fact"><dt>裝置</dt><dd>iPhone XR 之後、iOS 17.4+；中港版 iPhone 不支援 eSIM。</dd></div>
+            </dl>
+            <p class="note">常態免費層，沒有固定到期日；需要每 59 分鐘觀看一支短廣告解鎖下一段連線。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://www.firsty.app/help/esim/what-is-an-esim" target="_blank" rel="noopener">Firsty 官方</a><a class="source" href="https://www.techradar.com/pro/firsty-review" target="_blank" rel="noopener">TechRadar</a></div>
+          </article>
+        <article class="card featured" data-category="free japan">
+          <div class="card-top"><span class="rank">01 / 免費</span><span class="trust">即時驗證</span></div>
+          <h3>Roamless</h3>
+          <p class="offer"><em>約 2GB</em> · 餘額永不過期</p>
+          <dl class="facts">
+            <div class="fact"><dt>怎麼領</dt><dd>新帳戶先得 $1.25 迎新額度，再於 App 內兌換 $3.75，合計 $5。</dd></div>
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>TRAVELZD5</code><button class="copy" type="button" data-copy="TRAVELZD5">複製</button></div></dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>200+ 國，含日本、台灣、韓國與東南亞。</dd></div>
+            <div class="fact"><dt>資格</dt><dd>新使用者；App 內兌換；需有效 email。有效至撤銷。</dd></div>
+          </dl>
+          <p class="note">約 2GB 以日本／台灣約 $2.45/GB 估算；實際用量依目的地費率。另有首購 20% 折扣，但不可當作免費額度。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://travel-dealz.com/coupon/roamless/" target="_blank" rel="noopener">Travel-Dealz<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+
+        <article class="card featured" data-category="free third japan">
+              <div class="card-top"><span class="rank">R3-02 / 免費</span><span class="trust">官網已驗證</span></div>
+              <h3>Pelago × 新航 × Frewie</h3>
+              <p class="offer"><em>2GB</em> · 3 天</p>
+              <dl class="facts">
+                <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>PELAGOESIM</code><button class="copy" type="button" data-copy="PELAGOESIM">複製</button></div></dd></div>
+                <div class="fact"><dt>怎麼領</dt><dd>以 KrisFlyer 帳號登入 Pelago，選「KrisFlyer Exclusive: 2GB for 3 Days」，結帳輸碼後由 Email 收取 voucher。</dd></div>
+                <div class="fact"><dt>資格</dt><dd>須為 KrisFlyer 會員，且帳號綁定未來的新加坡航空或 Scoot 航班訂位。</dd></div>
+                <div class="fact"><dt>期限</dt><dd>活動至 2026/12/31；每人最多兌換 5 次。</dd></div>
+              </dl>
+              <p class="note">全球漫遊方案；符合既有機票資格者可零元兌換，不需另購付費 eSIM。</p>
+              <div class="source-row"><span>資料來源</span><a class="source" href="https://www.pelago.com/en/static-pages/sia-benefits/" target="_blank" rel="noopener">Pelago 官方</a></div>
+            </article>
+        <article class="card featured" data-category="free third japan">
+              <div class="card-top"><span class="rank">R3-03 / 免費</span><span class="trust">官網已驗證</span></div>
+              <h3>Roami 免費試用</h3>
+              <p class="offer"><em>100MB</em> · 啟用後 7 天</p>
+              <dl class="facts">
+                <div class="fact"><dt>怎麼領</dt><dd>於官網選擇國家並點選 Claim Free Trial，以 Email 接收 QR code；無優惠碼。</dd></div>
+                <div class="fact"><dt>可用地區</dt><dd>200+ 國，明列日本、韓國、泰國、新加坡、中國、香港、馬來西亞等。</dd></div>
+                <div class="fact"><dt>條件</dt><dd>免信用卡、純流量、可分享熱點；無隱藏費用。</dd></div>
+                <div class="fact"><dt>期限</dt><dd>未標示固定活動截止日。</dd></div>
+              </dl>
+              <p class="note warning">僅由官方頁面確認，尚無第三方評測交叉驗證；品牌知名度較低，建議先用免費額度小量測試。</p>
+              <div class="source-row"><span>資料來源</span><a class="source" href="https://www.roamiapp.com/free-esim/" target="_blank" rel="noopener">Roami 官方</a></div>
+            </article>
+        <article class="card featured" data-category="free japan">
+          <div class="card-top"><span class="rank">06 / 免費</span><span class="trust">App 列明</span></div>
+          <h3>GigSky App</h3>
+          <p class="offer"><em>100MB</em> · 迎新試用</p>
+          <dl class="facts">
+            <div class="fact"><dt>怎麼領</dt><dd>下載 App 並註冊新帳戶，自動取得免費方案；免信用卡。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>190+ 國。</dd></div>
+            <div class="fact"><dt>資格</dt><dd>新使用者。</dd></div>
+            <div class="fact"><dt>狀態</dt><dd>2026 年 9 月 App 版本 8.4.x 仍列明 100MB 免費方案。</dd></div>
+          </dl>
+          <p class="note">100MB 適合落地後傳訊息、叫車或完成主方案設定；報告提到特定促銷可達 3GB，但未確認當下可領。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.apkmirror.com/apk/gigsky-inc/gigsky-buy-esim-online/esim-travel-data-gigsky-8-4-2-release/" target="_blank" rel="noopener">APKMirror<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="source" href="https://www.techradar.com/pro/software-services/gigsky-esim" target="_blank" rel="noopener">TechRadar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card featured" data-category="free second japan">
+            <div class="card-top"><span class="rank">R2-02 / 免費</span><span class="trust">官網已驗證</span></div>
+            <h3>Yoho Mobile</h3>
+            <p class="offer"><em>日本 500MB</em> · 30 天</p>
+            <dl class="facts">
+              <div class="fact"><dt>怎麼領</dt><dd>下載 Yoho App，以 email 註冊後在 App 內選日本免費試用；免信用卡、無代碼。</dd></div>
+              <div class="fact"><dt>其他地區</dt><dd>中國 600MB、韓國 600MB、泰國 500MB；各包效期 30 天。</dd></div>
+              <div class="fact"><dt>資格</dt><dd>每位客戶限領一次；支援熱點與 iOS 直接安裝。</dd></div>
+              
+            </dl>
+            <p class="note">官網標示為限時優惠，但未公佈固定截止日；2026-09-29 頁面仍有效。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://yohomobile.com/en/get-a-free-esim-trial-guide" target="_blank" rel="noopener">Yoho Mobile 官方</a></div>
+          </article>
+        <article class="card featured" data-category="free third asia">
+              <div class="card-top"><span class="rank">R3-04 / 免費</span><span class="trust">五來源交叉</span></div>
+              <h3>U Mobile ULTRA5G 遊客 eSIM</h3>
+              <p class="offer"><em>100GB</em> · 24 小時</p>
+              <dl class="facts">
+                <div class="fact"><dt>怎麼領</dt><dd>親自在 KLIA T1／T2、亞庇或蘭卡威機場入境區掃描專用 QR code，透過 MyUMobile App 完成申請。</dd></div>
+                <div class="fact"><dt>適用地區</dt><dd>僅限馬來西亞境內使用，不是海外漫遊方案；5G／4G 無限速並可分享熱點。</dd></div>
+                <div class="fact"><dt>資格</dt><dd>限外國護照旅客；須完成護照與人臉驗證，每人限領一次，現有 U Mobile 使用者不符。</dd></div>
+                <div class="fact"><dt>期限</dt><dd>活動至 2026/12/31；未加購時門號可維持 14 天接聽來電。</dd></div>
+              </dl>
+              <p class="note">流量很大但只能抵達指定馬來西亞機場後領取，適合作為馬來西亞旅程落地用網。</p>
+              <div class="source-row"><span>資料來源</span><a class="source" href="https://soyacincau.com/2026/02/13/u-mobile-ultra5g-tourist-plan-free-100gb-esim/" target="_blank" rel="noopener">SoyaCincau</a><a class="source" href="https://www.lowyat.net/2026/383202/u-mobile-free-24-hour-100gb-tourist-esim-howto/" target="_blank" rel="noopener">Lowyat.NET</a></div>
+            </article>
+        <article class="card featured" data-category="free second japan">
+            <div class="card-top"><span class="rank">R2-05 / 免費</span><span class="trust">Visa 卡別優惠</span></div>
+            <h3>Travelgoogoo × Visa</h3>
+            <p class="offer"><em>最高 4GB</em> · 全球＋亞太雙包</p>
+            <dl class="facts">
+              <div class="fact"><dt>免費量</dt><dd>Infinite：2GB 全球＋2GB 亞太；Signature：1GB＋1GB；Platinum：1GB 全球。</dd></div>
+              <div class="fact"><dt>怎麼領</dt><dd>在 Visa 活動頁驗證亞太區發行的 16 位卡號，email 收 QR code；無代碼。</dd></div>
+              <div class="fact"><dt>可用地區</dt><dd>全球包 123 國；亞太包 23 國，皆含日本與台灣。</dd></div>
+              <div class="fact"><dt>期限</dt><dd>兌換至 2027-11-30；每人、每卡、每手機每年限領一次。</dd></div>
+            </dl>
+            <p class="note">另附 365 天訊息方案，可用 LINE、iMessage、WhatsApp、Telegram、WeChat。驗證時有 US$1 暫時預授權（不是購買費用，之後退回）；若實際入帳則不要繼續。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://milelion.com/2026/09/13/visa-offering-free-travelgoogoo-esim-data-and-messaging-plans/" target="_blank" rel="noopener">MileLion</a></div>
+          </article>
+        <article class="card featured" data-category="free second asia">
+            <div class="card-top"><span class="rank">R2-06 / 免費</span><span class="trust">媒體實測</span></div>
+            <h3>Travelgoogoo × Visa 泰國</h3>
+            <p class="offer"><em>無限流量</em> · 3 天／7 天</p>
+            <dl class="facts">
+              <div class="fact"><dt>卡別</dt><dd>一般合資格 Visa 3 天；Visa Infinite 7 天。</dd></div>
+              <div class="fact"><dt>網路</dt><dd>泰國 TRUE-H 5G；實測約 2GB 後降至約 2Mbps。</dd></div>
+              <div class="fact"><dt>怎麼領</dt><dd>Visa／Travelgoogoo 活動頁驗證亞太區 Visa 卡號，email 收 QR code；無代碼。</dd></div>
+              <div class="fact"><dt>期限</dt><dd>兌換至 2028-05-24；每 365 天、每個參與目的地限兌一次。</dd></div>
+            </dl>
+            <p class="note">泰國專用，另附 365 天基本訊息方案。可能出現約 KRW 1,500 暫時預授權（不是購買費用，之後退回）；若實際入帳則不要繼續。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://ezone.hk/article/20108416/Visa-信用卡免費送泰國-eSIM-實測" target="_blank" rel="noopener">eZone.hk 實測</a></div>
+          </article>
+        <article class="card featured" data-category="free second japan">
+            <div class="card-top"><span class="rank">R2-07 / 免費</span><span class="trust caution">卡片資格需實測</span></div>
+            <h3>Flexiroam × Mastercard</h3>
+            <p class="offer"><em>最高 3GB</em> · 15 天</p>
+            <dl class="facts">
+              <div class="fact"><dt>免費量</dt><dd>World Elite 3GB；部分資料顯示 World 卡 1GB。</dd></div>
+              <div class="fact"><dt>怎麼領</dt><dd>Flexiroam App → Mastercard Check Eligibility → 驗證 16 位卡號 → Redeem Starter Plan。</dd></div>
+              <div class="fact"><dt>可用地區</dt><dd>150+ 國，明列日本、台灣、韓國、新加坡與泰國。</dd></div>
+              <div class="fact"><dt>期限</dt><dd>優惠至 2026-12-31；每年可領一次，續購 85 折。</dd></div>
+            </dl>
+            <p class="note warning">台灣發行的 World Elite 是否符合資格，要以 App 內檢查結果為準。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://suitesmile.com/blog/2025/01/25/deal-get-3gb-free-global-data-roaming-from-flexiroam-with-a-world-elite-mastercard/" target="_blank" rel="noopener">SuiteSmile</a><a class="source" href="https://simplycodes.com/store/flexiroam.com" target="_blank" rel="noopener">SimplyCodes</a></div>
+          </article>
+        <article class="card featured" data-category="free second japan">
+            <div class="card-top"><span class="rank">R2-08 / 免費</span><span class="trust caution">目的地待確認</span></div>
+            <h3>GoMoWorld</h3>
+            <p class="offer"><em>1GB 免費試用</em> · App 內顯示效期</p>
+            <dl class="facts">
+              <div class="fact"><dt>怎麼領</dt><dd>下載 App、選擇目的地，查看「Test 1 GB free」是否出現；無代碼。</dd></div>
+              <div class="fact"><dt>範圍</dt><dd>App 覆蓋 200+ 目的地；免費 1GB 只限部分目的地。</dd></div>
+              <div class="fact"><dt>日本</dt><dd>是否可用及有效天數未公開，要在 App 內選日本確認。</dd></div>
+              <div class="fact"><dt>狀態</dt><dd>App 於 2026-09-22 更新時仍標示免費 1GB 試用。</dd></div>
+            </dl>
+            <p class="note warning">官方 App 描述已確認有試用，但目的地與效期會隨行銷活動變動。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://www.appbrain.com/app/gomoworld-travel-esim/ie.eir.gomoworld" target="_blank" rel="noopener">AppBrain</a><a class="source" href="https://www.thetraveler.org/gomoworld-pricing-explained-and-whether-its-worth-it/" target="_blank" rel="noopener">The Traveler</a></div>
+          </article>
+        <article class="card featured" data-category="free japan">
+          <div class="card-top"><span class="rank">03 / 免費</span><span class="trust">已索引確認</span></div>
+          <h3>Eskimo.Travel</h3>
+          <p class="offer"><em>1GB</em> · 2 年效期</p>
+          <dl class="facts">
+            <div class="fact"><dt>怎麼領</dt><dd>官網或 App 註冊新帳戶，結帳時輸入促銷碼。</dd></div>
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>Alertify</code><button class="copy" type="button" data-copy="Alertify">複製</button></div></dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>130+ 國，含日本、台灣、韓國、香港與東南亞。</dd></div>
+            <div class="fact"><dt>資格</dt><dd>僅新使用者；頁面未標示截止日。</dd></div>
+          </dl>
+          <p class="note">效期長，適合先領作備援。研究於 2026 年 9 月仍找到該推廣，但未見明確截止日。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="http://alertify.eu/eskimo-travel-esim-free-trial/" target="_blank" rel="noopener">Alertify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card featured" data-category="free japan">
+          <div class="card-top"><span class="rank">04 / 免費</span><span class="trust">卡別限定</span></div>
+          <h3>GigSky × Visa</h3>
+          <p class="offer"><em>1GB 或 3GB</em> · 15 天</p>
+          <dl class="facts">
+            <div class="fact"><dt>免費量</dt><dd>Visa Signature：1GB；Visa Infinite：3GB。</dd></div>
+            <div class="fact"><dt>怎麼領</dt><dd>進入 GigSky App 的 Visa 專區，新增並驗證合格 Visa 卡。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>175+ 目的地，含日本與亞洲；僅限國際漫遊使用。</dd></div>
+            <div class="fact"><dt>期限</dt><dd>每曆年 1 次；領取後 1 年內啟用，逾期自動啟用。</dd></div>
+          </dl>
+          <p class="note">需持有 Visa Signature 或 Visa Infinite，不是所有 Visa 卡都符合。另有加購 20%–30% 折扣。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://thepointsguy.com/credit-cards/visa-gigsky-esim-benefit/" target="_blank" rel="noopener">The Points Guy<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        </div>
+      </div>
+
+      <div class="batch group-block" data-group="candidate">
+        <div class="section-head candidate-head">
+          <div>
+            <span class="batch-label">待實測 · 不計入免費數量</span>
+            <h2>可能零元，但目前不能確認</h2>
+            <p class="section-note">共 9 個。優惠碼現況、資格、截止日或結帳是否真的 0 元仍不明；只有畫面明確顯示 0 元時才繼續。</p>
+          </div>
+          <div class="count">9 個待實測</div>
+        </div>
+        <div class="cards">
+        <article class="card" data-category="third candidate">
+              <div class="card-top"><span class="rank">R3-ALT-01 / 未驗證</span><span class="trust unverified">待實測 · 不計入免費</span></div>
+              <h3>JetFi App 新客禮</h3>
+              <p class="offer"><em>1GB</em> · 全球 52 國</p>
+              <dl class="facts">
+                <div class="fact"><dt>兌換碼</dt><dd><div class="code-row"><code>KZK25</code><button class="copy" type="button" data-copy="KZK25">複製</button></div></dd></div>
+                <div class="fact"><dt>怎麼領</dt><dd>下載 JetFi App、註冊會員，於「使用兌換碼」輸入代碼。</dd></div>
+                <div class="fact"><dt>效期</dt><dd>兌換後 30 日內開通；開通後 30 天內有效，可分享熱點。</dd></div>
+                <div class="fact"><dt>問題</dt><dd>文章 2024 年首發、2026/5 更新仍保留資訊，但 2026/10/3 當下是否可兌換未驗證。</dd></div>
+              </dl>
+              <p class="note warning">備選（未驗證）：請直接在 App 內測試代碼，成功顯示 0 元／免費流量後再安裝。</p>
+              <div class="source-row"><span>資料來源</span><a class="source" href="https://ksk.tw/2024-01-06-2391/" target="_blank" rel="noopener">凱子凱</a><a class="source" href="https://sn2.tw/blog/jetfi-mobile-esim/" target="_blank" rel="noopener">SN2.tw</a></div>
+            </article>
+        <article class="card" data-category="third candidate">
+              <div class="card-top"><span class="rank">R3-ALT-02 / 未驗證</span><span class="trust unverified">待實測 · 不計入免費</span></div>
+              <h3>菲律賓航空 myPAL eSIM × Kolet</h3>
+              <p class="offer"><em>1GB</em> · 2 天</p>
+              <dl class="facts">
+                <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>FLYPAL</code><button class="copy" type="button" data-copy="FLYPAL">複製</button></div></dd></div>
+                <div class="fact"><dt>怎麼領</dt><dd>透過 PAL–Kolet 聯名網站或 Kolet App 輸入優惠碼。</dd></div>
+                <div class="fact"><dt>可用地區</dt><dd>Kolet 網路 190+ 國，涵蓋菲航國際目的地。</dd></div>
+                <div class="fact"><dt>問題</dt><dd>官方說法限 PAL 國際線乘客；直接在 App 輸碼是否必須驗證訂位尚未確認，亦未標示截止日。</dd></div>
+              </dl>
+              <p class="note warning">備選（未驗證）：四家媒體說法一致，但旅客資格驗證方式仍不明。</p>
+              <div class="source-row"><span>資料來源</span><a class="source" href="https://insiderph.com/philippine-airlines-mypal-esim-boosts-passenger-connectivity" target="_blank" rel="noopener">InsiderPH</a><a class="source" href="https://www.philstar.com/business/2025/11/06/2485087/no-more-roaming-charges-pal-launches-own-esim" target="_blank" rel="noopener">Philstar</a></div>
+            </article>
+        <article class="card" data-category="third candidate">
+              <div class="card-top"><span class="rank">R3-ALT-03 / 限量</span><span class="trust unverified">待實測 · 不計入免費</span></div>
+              <h3>CUniq GO 中秋／國慶活動</h3>
+              <p class="offer"><em>500MB 全球流量</em> · 領取後 1 年有效</p>
+              <dl class="facts">
+                <div class="fact"><dt>私訊暗號</dt><dd><div class="code-row"><code>中秋團圓</code><button class="copy" type="button" data-copy="中秋團圓">複製</button><code>國慶福利</code><button class="copy" type="button" data-copy="國慶福利">複製</button></div></dd></div>
+                <div class="fact"><dt>怎麼領</dt><dd>追蹤 CUniq GO 官方 Facebook 專頁、按讚指定活動貼文，再私訊暗號取得兌換碼，於 App 內兌換。</dd></div>
+                <div class="fact"><dt>內容</dt><dd>國慶波為全球 80+ 目的地 500MB、限量 1,000 份；中秋波另稱中國內地加送 500MB，啟用後可用 24 小時。</dd></div>
+                <div class="fact"><dt>問題</dt><dd>僅單一轉述來源；名額是否已滿、台灣使用者是否需香港門號註冊皆未驗證。</dd></div>
+              </dl>
+              <p class="note warning">備選（未驗證）：兩組暗號都可嘗試，但須以官方 Facebook 回覆與 App 顯示為準。</p>
+              <div class="source-row"><span>資料來源</span><a class="source" href="https://jetsobear.com/cuniq-go-free-esim-2026-p332898/" target="_blank" rel="noopener">JetsoBear 國慶活動</a><a class="source" href="https://jetsobear.com/cuniq-esim-free-giveaway-2026-p332044/" target="_blank" rel="noopener">JetsoBear 中秋活動</a></div>
+            </article>
+        <article class="card" data-category="candidate third japan">
+              <div class="card-top"><span class="rank">待實測 / 條款不明</span><span class="trust unverified">需實測 · 不計入免費</span></div>
+              <h3>Breeze × EFES</h3>
+              <p class="offer"><em>最高 1GB</em> · 190+ 國</p>
+              <dl class="facts">
+                <div class="fact"><dt>怎麼領</dt><dd>從 EFES 專屬活動頁進入 Breeze，選擇流量方案並前往結帳；折扣會自動套用，無優惠碼。</dd></div>
+                <div class="fact"><dt>啟用期限</dt><dd>eSIM 可於取得後 6 個月內啟用；活動未標示截止日。</dd></div>
+                <div class="fact"><dt>問題</dt><dd>官方宣稱最高 1GB 免費漫遊流量，但流程要求先選付費方案，未說明是否能結帳為 0 元。</dd></div>
+              </dl>
+              <p class="note warning">備選（條款不明）：只有結帳總額明確顯示 0 元時才繼續；不要為了「免費」先支付方案費。</p>
+              <div class="source-row"><span>資料來源</span><a class="source" href="https://breezesim.com/pages/efes-esim" target="_blank" rel="noopener">Breeze 官方</a><a class="source" href="https://breezesim.promopro.co.uk" target="_blank" rel="noopener">PromoPro</a></div>
+            </article>
+        <article class="card" data-category="candidate">
+            <div class="card-top"><span class="rank">ALT-01 / 未驗證</span><span class="trust unverified">待實測 · 不計入免費</span></div>
+            <h3>Grab × KnowRoaming</h3>
+            <p class="offer"><em>宣稱 1GB</em> · 145+ 國</p>
+            <dl class="facts">
+              <div class="fact"><dt>怎麼領</dt><dd>透過 Grab App 兌換免費全球 eSIM；無公開代碼。</dd></div>
+              <div class="fact"><dt>問題</dt><dd>資料來自 2026-07 文章，9 月是否仍有效未確認。</dd></div>
+              <div class="fact"><dt>台灣限制</dt><dd>Grab 未在台灣營運，台灣使用者註冊帳號可能受限。</dd></div>
+            </dl>
+            <p class="note warning">備選（未驗證）：不要把它算入已可用流量，先在 Grab App 確認活動入口。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://alertify.eu/grab-free-esim-data/" target="_blank" rel="noopener">Alertify</a></div>
+          </article>
+        <article class="card" data-category="candidate">
+            <div class="card-top"><span class="rank">ALT-02 / 未驗證</span><span class="trust unverified">待實測 · 不計入免費</span></div>
+            <h3>Keepgo Phoenix</h3>
+            <p class="offer"><em>100MB</em> · 7 天試用</p>
+            <dl class="facts">
+              <div class="fact"><dt>怎麼領</dt><dd>從 Keepgo Phoenix 全球 eSIM 產品頁進入免費試用。</dd></div>
+              <div class="fact"><dt>問題</dt><dd>首次結帳要求綁信用卡；是否還需購買付費流量未說清楚。</dd></div>
+              <div class="fact"><dt>判定</dt><dd>目前不能確認是真正零成本。</dd></div>
+            </dl>
+            <p class="note warning">備選（未驗證）：除非結帳頁明確顯示總額為 0，否則不要繼續。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://www1.keepgo.com/products/global-esim" target="_blank" rel="noopener">Keepgo 官方</a></div>
+          </article>
+        <article class="card" data-category="candidate">
+            <div class="card-top"><span class="rank">ALT-03 / 限量</span><span class="trust unverified">待實測 · 不計入免費</span></div>
+            <h3>Orange France</h3>
+            <p class="offer"><em>31 天免費試用</em> · 前 50,000 名</p>
+            <dl class="facts">
+              <div class="fact"><dt>範圍</dt><dd>只限法國境內 4G／5G 使用，不是日本漫遊方案。</dd></div>
+              <div class="fact"><dt>資格</dt><dd>需要法國電信實名 ID；台灣使用者通常不適用。</dd></div>
+              <div class="fact"><dt>問題</dt><dd>名額與目前是否仍可申請未確認。</dd></div>
+            </dl>
+            <p class="note warning">備選（未驗證）：只適合符合資格、確定前往法國的人。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://alertify.eu/orange-france-offers-1-month-free-esim-trial-to-first-50000-users/" target="_blank" rel="noopener">Alertify</a></div>
+          </article>
+        <article class="card" data-category="candidate japan">
+          <div class="card-top"><span class="rank">待實測 / 零元狀態未確認</span><span class="trust unverified">待實測 · 不計入免費</span></div>
+          <h3>World eSIM</h3>
+          <p class="offer"><em>日本 1GB</em> · App 領取</p>
+          <dl class="facts">
+            <div class="fact"><dt>怎麼領</dt><dd>下載 World eSIM App，於 App 內領取日本免費 eSIM。</dd></div>
+            
+            <div class="fact"><dt>可用地區</dt><dd>免費版限日本。</dd></div>
+            <div class="fact"><dt>狀態</dt><dd>2026 年 8 月底影片仍宣稱有效；未見官方活動截止日。</dd></div>
+          </dl>
+          <p class="note warning">只有單一影片來源，尚未有第二來源交叉確認。下載前先看 App 內是否仍顯示 1GB 免費方案。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.youtube.com/watch?v=1iAGlOX6MuA" target="_blank" rel="noopener">YouTube 來源影片<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card" data-category="japan candidate">
+          <div class="card-top"><span class="rank">13 / 免費 · 限量</span><span class="trust unverified">待實測 · 不計入免費</span></div>
+          <h3>宮古島市免費 eSIM</h3>
+          <p class="offer"><em>1GB</em> · 外國旅客限定</p>
+          <dl class="facts">
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>MIYAKOFREE</code><button class="copy" type="button" data-copy="MIYAKOFREE">複製</button></div></dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>日本沖繩縣宮古島。</dd></div>
+            <div class="fact"><dt>資格</dt><dd>訪問宮古島的外國旅客；數量有限。</dd></div>
+            <div class="fact"><dt>期限</dt><dd>官方文件載明實證事業為 2026 年 6–9 月（預定）。</dd></div>
+          </dl>
+          <p class="note warning">現在已是 9 月底，活動可能已結束。只在確定前往宮古島且結帳頁仍接受代碼時考慮。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.city.miyakojima.lg.jp/soshiki/shityo/kankosyoukou/kankou/oshirase/files/eSIM.pdf" target="_blank" rel="noopener">宮古島市官方 PDF<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        </div>
+      </div>
+
+      <div class="batch group-block paid-section" data-group="paid">
+        <div class="section-head paid-head">
+          <div>
+            <span class="batch-label">付費 · 不算免費</span>
+            <h2>付費折扣碼（需購買，不算免費）</h2>
+            <p class="section-note">共 10 個。以下都要先購買付費 eSIM 或方案，折扣、回饋與購買後贈送流量都不計入上方免費方案數量。</p>
+          </div>
+          <div class="count">10 個付費優惠</div>
+        </div>
+        <p class="note warning"><strong>未列入：</strong><code>GOCITYLONDON26</code> 可領倫敦 2.5GB，但必須提供付費 Go City 城市通行證的 pass number；依「要付錢就不算免費」標準，不列入免費清單，也不計入免費數量。此碼與 <code>TRAVELDEALZ</code> 都限新戶，兩者只能擇一使用。</p>
+        <div class="cards">
+        <article class="card discount-card" data-category="discount third japan">
+              <div class="card-top"><span class="rank">付費 01 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+              <h3>Klook eSIM</h3>
+              <p class="offer"><em>購買後送 3GB</em> · 首次購買限定</p>
+              <dl class="facts">
+                <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>KLOOKESIM</code><button class="copy" type="button" data-copy="KLOOKESIM">複製</button></div></dd></div>
+                <div class="fact"><dt>怎麼領</dt><dd>登入 Klook，選擇適用的 Klook eSIM 方案，於結帳時輸入優惠碼。</dd></div>
+                <div class="fact"><dt>可用地區</dt><dd>涵蓋日本、韓國、東南亞及全球多國；實際目的地依結帳時所選方案。</dd></div>
+                <div class="fact"><dt>資格</dt><dd>限首次購買 Klook eSIM 的使用者；需有 Klook 帳號。</dd></div>
+              </dl>
+              <p class="note urgent">需先購買付費 Klook eSIM 才能獲贈 3GB；領取過程不是零成本，因此歸在付費區、不計入免費方案。來源標示優惠至 2026/10/9。</p>
+              <div class="source-row"><span>資料來源</span><a class="source" href="https://www.dontpayfull.com/at/au.klook.com" target="_blank" rel="noopener">DontPayFull</a><a class="source" href="https://goughlui.com/2025/11/16/review-klook-travel-esim-redteago/" target="_blank" rel="noopener">Gough's Tech Zone</a></div>
+            </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 02 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>Pelago 付費加購</h3>
+          <p class="offer"><em>9 折</em></p>
+          <dl class="facts"><div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>PELESIM10OFF</code><button class="copy" type="button" data-copy="PELESIM10OFF">複製</button></div></dd></div>
+            <div class="fact"><dt>怎麼用</dt><dd>購買 Pelago eSIM 加購方案時輸入優惠碼。</dd></div>
+            <div class="fact"><dt>性質</dt><dd>必須付款購買方案，只有折扣，不是免費 eSIM。</dd></div></dl>
+          <p class="note">與 KrisFlyer 合資格會員可零元領取的 2GB 活動不同；本碼只適用付費加購。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.pelago.com/en/static-pages/sia-benefits/" target="_blank" rel="noopener">Pelago 官方</a></div>
+        </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 03 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>Yoho Mobile 付費方案</h3>
+          <p class="offer"><em>88 折</em></p>
+          <dl class="facts"><div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>YOHO12</code><button class="copy" type="button" data-copy="YOHO12">複製</button></div></dd></div>
+            <div class="fact"><dt>怎麼用</dt><dd>購買 Yoho Mobile 完整流量方案時輸入優惠碼。</dd></div>
+            <div class="fact"><dt>性質</dt><dd>必須付款購買方案，只有 12% 折扣，不是免費試用。</dd></div></dl>
+          <p class="note">日本 500MB 免費試用仍單獨列在真正免費區；這張卡只整理付費方案折扣。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://yohomobile.com/en/get-a-free-esim-trial-guide" target="_blank" rel="noopener">Yoho Mobile 官方</a></div>
+        </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 04 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>World eSIM 付費方案</h3>
+          <p class="offer"><em>8 折</em></p>
+          <dl class="facts"><div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>UJCP20</code><button class="copy" type="button" data-copy="UJCP20">複製</button></div></dd></div>
+            <div class="fact"><dt>怎麼用</dt><dd>購買 World eSIM 全球付費方案時輸入優惠碼。</dd></div>
+            <div class="fact"><dt>性質</dt><dd>必須付款購買方案，只有 20% 折扣，不是免費 eSIM。</dd></div></dl>
+          <p class="note">World eSIM 的日本 1GB 宣稱另放在待實測區；這裡只列付費方案折扣。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.youtube.com/watch?v=1iAGlOX6MuA" target="_blank" rel="noopener">YouTube 來源影片</a></div>
+        </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 05 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>Airalo</h3>
+          <p class="offer"><em>15% off</em> 或 $3 推薦金</p>
+          <dl class="facts">
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>IAZJLZME15</code><button class="copy" type="button" data-copy="IAZJLZME15">複製</button><code>SIMPACKERS15</code><button class="copy" type="button" data-copy="SIMPACKERS15">複製</button></div></dd></div>
+            <div class="fact"><dt>怎麼用</dt><dd>新使用者結帳輸入 15% 碼；或註冊時輸入朋友推薦碼得 $3 Airmoney。</dd></div>
+            <div class="fact"><dt>期限</dt><dd><code>IAZJLZME15</code> 至 2026-12-31；每筆訂單限用 1 碼。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>200+ 國，含日本與亞洲。</dd></div>
+          </dl>
+          <p class="note">沒有免費試用。15% 碼限新使用者；推薦金與折扣碼不可疊加。IAZJLZME15 無最低消費，單筆最高折 $100。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.snatchsavings.com/blog/airalo-promo-code-15-off-new-users" target="_blank" rel="noopener">Snatch Savings<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="source" href="https://simpackers.com/deals/airalo-promo-code" target="_blank" rel="noopener">Simpackers<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 06 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>Yesim</h3>
+          <p class="offer"><em>最高 20% off</em> · 多組碼可試</p>
+          <dl class="facts">
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>blog2</code><button class="copy" type="button" data-copy="blog2">複製</button><code>BRIAN</code><button class="copy" type="button" data-copy="BRIAN">複製</button><code>YESIMSPECIAL10</code><button class="copy" type="button" data-copy="YESIMSPECIAL10">複製</button><code>SIMPACKERS20</code><button class="copy" type="button" data-copy="SIMPACKERS20">複製</button></div></dd></div>
+            <div class="fact"><dt>折扣</dt><dd>新使用者 €2 off、€3 off、首購 10% off 或新使用者 20% off。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>194 國，含日本與亞洲。</dd></div>
+            <div class="fact"><dt>狀態</dt><dd>2026 年 9 月仍有效；結帳「Redeem code」欄位輸入。</dd></div>
+          </dl>
+          <p class="note">沒有免費試用。推薦計畫須被推薦者完成首購後，雙方各得 €5 Ycoins；邀滿 5 人另加 €50。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://blog.yesim.tech/best-esim-promo-codes-by-yesim/" target="_blank" rel="noopener">Yesim 官方部落格<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="source" href="https://simpackers.com/deals/yesim-promo-code" target="_blank" rel="noopener">Simpackers<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 07 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>aloSIM</h3>
+          <p class="offer"><em>$3 off</em> 或滿 $10 送 $5 禮卡</p>
+          <dl class="facts">
+            <div class="fact"><dt>怎麼用</dt><dd>新使用者註冊首購時輸入朋友推薦碼得 $3 off；禮卡活動於結帳自動適用。</dd></div>
+            <div class="fact"><dt>期限</dt><dd>$5 gift card 活動至 2026-10-01。</dd></div>
+            <div class="fact"><dt>加碼</dt><dd>aloCASH 消費回饋 5%；另含 Hushed 免費美國門號功能。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>170+ 國。</dd></div>
+          </dl>
+          <p class="note">沒有免費試用。報告未提供可公開展示的固定推薦碼；需持有效推薦碼才能使用 $3 off。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.dontpayfull.com/at/alosim.com" target="_blank" rel="noopener">DontPayFull<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 08 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>Saily</h3>
+          <p class="offer"><em>$5 off</em> 推薦優惠</p>
+          <dl class="facts">
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>AMANWA9993</code><button class="copy" type="button" data-copy="AMANWA9993">複製</button><code>DEMAND5</code><button class="copy" type="button" data-copy="DEMAND5">複製</button></div></dd></div>
+            <div class="fact"><dt>折扣</dt><dd>朋友推薦 $5 off 首購；AMANWA9993 為 $3 off；DEMAND5 為 5% off。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>200+ 國，含日本與亞洲。</dd></div>
+            <div class="fact"><dt>怎麼用</dt><dd>結帳「Got a coupon?」輸入；限新使用者的推薦優惠。</dd></div>
+          </dl>
+          <p class="note">沒有免費試用。推薦人所得 $5 credit 有效 1 年；DEMAND5 於 2026-09-19 驗證可用。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.dontpayfull.com/at/saily.com" target="_blank" rel="noopener">DontPayFull<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="source" href="https://saily.com/blog/saily-vs-maya-mobile/" target="_blank" rel="noopener">Saily 官方<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="source" href="https://www.gopaisa.com/referral-signup-bonus-code-coupons-offers/saily-referral-code-refer-earn" target="_blank" rel="noopener">GoPaisa<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 09 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>Holafly</h3>
+          <p class="offer"><em>5% off</em> · 月費方案 10% off</p>
+          <dl class="facts">
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>MYESIMNOW5</code><button class="copy" type="button" data-copy="MYESIMNOW5">複製</button><code>MONTHLYPLAN10</code><button class="copy" type="button" data-copy="MONTHLYPLAN10">複製</button><code>STEPHANDPETE</code><button class="copy" type="button" data-copy="STEPHANDPETE">複製</button></div></dd></div>
+            <div class="fact"><dt>折扣</dt><dd>MYESIMNOW5 為標準 eSIM 5% off；MONTHLYPLAN10 為月費方案 10% off；STEPHANDPETE 兩者皆適用。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>200+ 國；日本有吃到飽方案。</dd></div>
+            <div class="fact"><dt>狀態</dt><dd>MYESIMNOW5 已監測 74 天，2026-09-28 仍有效。</dd></div>
+          </dl>
+          <p class="note">沒有免費試用；需購買方案才能兌現折扣。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://www.dontpayfull.com/at/esim.holafly.com" target="_blank" rel="noopener">DontPayFull<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="source" href="https://stephandpete.co/holafly" target="_blank" rel="noopener">Steph & Pete<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        <article class="card discount-card" data-category="discount japan">
+          <div class="card-top"><span class="rank">付費 10 / 需購買</span><span class="trust paid">需購買 · 不算免費</span></div>
+          <h3>MobiMatter</h3>
+          <p class="offer"><em>50% 現金回饋</em> · 上限 $5</p>
+          <dl class="facts">
+            <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>50CASHBACK</code><button class="copy" type="button" data-copy="50CASHBACK">複製</button></div></dd></div>
+            <div class="fact"><dt>怎麼用</dt><dd>新使用者首購結帳輸入；方案啟用後回饋自動入帳。</dd></div>
+            <div class="fact"><dt>可用地區</dt><dd>200+ 國。</dd></div>
+            <div class="fact"><dt>狀態</dt><dd>2026 年「獨家合作」持續中，未標示明確截止日。</dd></div>
+          </dl>
+          <p class="note warning">沒有免費試用，且只有單一優惠來源。這是回饋而非立即折抵；付款前先確認結帳頁條款。</p>
+          <div class="source-row"><span>資料來源</span><a class="source" href="https://promocodetips.com/mobimatter/" target="_blank" rel="noopener">PromoCodeTips<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="source" href="http://news.thedaytimereport.com/story/550830/mobimatter-promo-code-50cashback-exclusive-deal-via-promocodetipscom.html" target="_blank" rel="noopener">新聞稿<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </article>
+        </div>
+      </div>
+
+      <div class="batch group-block" data-group="status">
+        <div class="section-head candidate-head">
+          <div>
+            <span class="batch-label">失效／安全紀錄</span>
+            <h2>不要再嘗試的項目</h2>
+            <p class="section-note">失效代碼不計入免費數量；三個經使用者回報為詐騙的網站僅保留警示，不提供前往連結。</p>
+          </div>
+        </div>
+        <div class="cards">
+        <article class="card featured expired" data-category="expired second japan">
+            <div class="card-top"><span class="rank">R2-04 / 已失效</span><span class="trust expired">已失效</span></div>
+            <h3>Tunz（原 DENT）</h3>
+            <p class="offer"><em>10GB</em> · 30 天（已失效）</p>
+            <dl class="facts">
+              <div class="fact"><dt>優惠碼</dt><dd><div class="code-row"><code>TUNZ+DENT</code><span class="expired-code">目前無法兌換</span></div></dd></div>
+              <div class="fact"><dt>狀態</dt><dd>已失效；可能名額已用完或活動已結束。</dd></div>
+              <div class="fact"><dt>怎麼領</dt><dd>原領取方式為下載 Tunz App、註冊驗證，前往 Account → Redeem Code；現不建議再嘗試。</dd></div>
+              <div class="fact"><dt>可用地區</dt><dd>App 覆蓋 150 國，亞洲與日本是重點市場。</dd></div>
+              <div class="fact"><dt>額外</dt><dd>新使用者註冊另有免費流量包，但官方未公開流量。</dd></div>
+            </dl>
+            <p class="note warning"><strong>已失效：</strong>使用者回報優惠碼目前無法兌換，可能名額已用完或活動已結束。本條目僅保留作狀態紀錄。</p>
+            <div class="source-row"><span>資料來源</span><a class="source" href="https://tunz.io/tunz-x-dent" target="_blank" rel="noopener">Tunz 官方活動頁</a><a class="source" href="https://www.mexc.co/en-PH/news/1118175" target="_blank" rel="noopener">MEXC 新聞</a></div>
+          </article>
+        <aside class="fraud-warning" role="alert" aria-labelledby="fraud-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20h15.8a2 2 0 0 0 1.7-2.5L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+            <div>
+              <span class="fraud-label">安全警示 · 已移除</span>
+              <h3 id="fraud-title">請勿使用 esimfree.org</h3>
+              <p><strong>該網站經使用者回報為詐騙，請勿使用。</strong> 原方案已從清單移除；請勿前往、安裝其設定檔，或提供付款與個人資料。</p>
+            </div>
+          </aside>
+        <aside class="fraud-warning" role="alert" aria-labelledby="fraud-trial-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20h15.8a2 2 0 0 0 1.7-2.5L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+            <div>
+              <span class="fraud-label">安全警示 · 已移除</span>
+              <h3 id="fraud-trial-title">請勿使用 freeesimtrial.net</h3>
+              <p><strong>該網站經使用者回報為詐騙，請勿使用。</strong> 原備選已從清單移除；請勿提供付款資料、個人資料或安裝其設定檔。</p>
+            </div>
+          </aside>
+        <aside class="fraud-warning" role="alert" aria-labelledby="fraud-edu-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20h15.8a2 2 0 0 0 1.7-2.5L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+            <div>
+              <span class="fraud-label">安全警示 · 已移除</span>
+              <h3 id="fraud-edu-title">請勿使用 freeesim.edu.pl</h3>
+              <p><strong>該網站經使用者回報為詐騙，請勿使用。</strong> 原備選已從清單移除；請勿提供卡號、證件、個人資料或安裝其設定檔。</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="strategy" aria-labelledby="strategy-heading">
+      <div class="strategy-title">
+        <h2 id="strategy-heading">日本行前領取順序</h2>
+        <p>把短效方案留到接近出發時，再用長效額度做跨國備援。</p>
+      </div>
+      <ol class="steps">
+        <li><strong>先領免卡、0 元方案：</strong>Nomad 1GB、Roami 100MB 與 Firsty 低速流量都不要求先購買付費 eSIM。</li>
+        <li><strong>再檢查既有資格：</strong>有合資格 Visa／Mastercard 或新航、Scoot 訂位，再領 GigSky、Travelgoogoo、Flexiroam 或 Pelago。</li>
+        <li><strong>預授權不是購買：</strong>Travelgoogoo 可能暫時圈存小額，正常情況會退回；若變成實際入帳就不要繼續。</li>
+        <li><strong>待實測不要先算：</strong>JetFi、FLYPAL、CUniq GO、Breeze 等只有在結帳明確顯示 0 元時才領。</li>
+        <li><strong>最後才看付費折扣：</strong>Klook、Airalo、Yesim、aloSIM、Saily、Holafly、MobiMatter、Yoho 等都需要付款，不是免費方案。</li>
+      </ol>
+    </section>
+
+    <div class="install">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M9 6h6M11 18h2"/></svg>
+      <div><b>iPhone 安裝路徑：</b>使用業者 App 一鍵安裝，或前往「設定 → 行動服務 → 加入 eSIM」。旅行中啟用該線路後，依業者要求開啟「數據漫遊」。</div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap"><p>研究快照：2026-10-03。優惠、費率與資格可能更動；最終以業者 App／網站顯示為準。</p></div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">已複製</div>
+
+  <script>
+    (function () {
+      var filters = document.querySelectorAll('.filter');
+      var cards = document.querySelectorAll('.card');
+      var count = document.getElementById('resultCount');
+      var groups = document.querySelectorAll('.group-block');
+      var toast = document.getElementById('toast');
+      var toastTimer;
+
+      filters.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var selected = button.getAttribute('data-filter');
+          var visible = 0;
+          filters.forEach(function (item) {
+            item.setAttribute('aria-pressed', item === button ? 'true' : 'false');
+          });
+          cards.forEach(function (card) {
+            var categories = card.getAttribute('data-category').split(' ');
+            var show = selected === 'all' || categories.indexOf(selected) !== -1 || (selected === 'japan' && categories.indexOf('asia') !== -1);
+            card.setAttribute('data-hidden', show ? 'false' : 'true');
+            if (show) visible += 1;
+          });
+          groups.forEach(function (group) {
+            var groupCards = group.querySelectorAll('.card');
+            var hasVisibleCard = Array.prototype.some.call(groupCards, function (card) {
+              return card.getAttribute('data-hidden') !== 'true';
+            });
+            group.hidden = !hasVisibleCard;
+          });
+          count.textContent = '顯示 ' + visible + ' 個選項';
+        });
+      });
+
+      document.querySelectorAll('.copy').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var text = button.getAttribute('data-copy');
+          function done() {
+            clearTimeout(toastTimer);
+            toast.textContent = '已複製 ' + text;
+            toast.classList.add('show');
+            button.textContent = '已複製';
+            toastTimer = setTimeout(function () {
+              toast.classList.remove('show');
+              button.textContent = '複製';
+            }, 1500);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(function () {
+              fallbackCopy(text, done);
+            });
+          } else {
+            fallbackCopy(text, done);
+          }
+        });
+      });
+
+      function fallbackCopy(text, callback) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(area);
+        callback();
+      }
+    }());
+  </script>
+</body>
+</html>
