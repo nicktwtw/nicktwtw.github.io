@@ -399,6 +399,59 @@
     .collection .grid { margin-top: 18px; }
     .col-empty { margin: 26px 0 0; padding: 30px 22px; background: var(--surface); border: 1px dashed var(--line); border-radius: 18px; color: var(--muted); text-align: center; }
 
+    /* ---------- 國家頁 ---------- */
+    .country { padding: 30px 0 10px; }
+    .country h2 { margin-bottom: 4px; }
+    .country-rules {
+      margin-top: 18px;
+      padding: 16px 18px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .country-rules h3 { margin: 0 0 8px; font-size: 15px; }
+    .country-rules ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
+    .country-rules li { padding: 2px 0; }
+    .country-rules strong { color: var(--text); }
+    .country-group { margin-top: 30px; }
+    .country-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 10px; }
+    .country-head h3 { margin: 0; font-size: 21px; letter-spacing: -.02em; }
+    .country-total { font: 600 13px/1.4 "IBM Plex Mono", monospace; color: var(--muted); }
+    .country-total b { font-size: 19px; color: var(--green); }
+    .country-note { margin: 8px 2px 0; color: var(--muted); font-size: 13.5px; }
+    .country-foot { margin: 34px 2px 0; color: var(--muted); font-size: 13.5px; }
+    .crow-list { display: grid; gap: 8px; }
+    .crow {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-width: 0;
+      padding: 10px 14px 10px 12px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+    }
+    .crow:hover { border-color: var(--muted); }
+    .crow-icon { position: relative; flex: 0 0 auto; }
+    .crow-icon .tile-icon { width: 42px; height: 42px; margin: 0; border-radius: 11px; font-size: 18px; }
+    .crow-icon .tile-check { top: -6px; right: -6px; }
+    .crow.collected .crow-icon .tile-check { display: grid; }
+    .crow-main { flex: 1; min-width: 0; }
+    .crow-name { display: block; font-size: 14.5px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; }
+    .crow-meta { display: block; color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+    .crow-data { flex: 0 0 auto; font-size: 15px; font-weight: 800; color: var(--blue-strong); white-space: nowrap; }
+    .crow > svg { flex: 0 0 auto; width: 16px; color: var(--muted); }
+    @media (max-width: 640px) {
+      .crow { gap: 10px; padding: 9px 10px; }
+      .crow-data { font-size: 13.5px; }
+      .crow-name { font-size: 13.5px; }
+    }
+
     /* ---------- 策略／安裝／頁尾 ---------- */
     .strategy { margin-top: 52px; display: grid; grid-template-columns: .8fr 1.2fr; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); overflow: hidden; }
     .strategy-title { padding: 28px; background: var(--surface-2); }
@@ -480,7 +533,7 @@
       .tile-offer { font-size: 11px; }
       .tag { font-size: 10px; padding: 1px 6px; }
       .detail-hero-row .tile-icon { width: 62px; height: 62px; font-size: 27px; }
-      .tabbar button { min-width: 96px; padding: 8px 16px; }
+      .tabbar button { min-width: 88px; padding: 8px 12px; }
     }
 
     @media (max-width: 430px) {
@@ -1275,10 +1328,35 @@
     </div>
   </section>
 
+  <section class="country" id="viewCountry" hidden aria-labelledby="countryHeading">
+    <div class="wrap">
+      <h2 id="countryHeading">依國家看可疊加的免費流量</h2>
+      <p class="section-note">到同一個國家旅行時，把該國能用的真正免費方案全部疊起來，一趟可以有多少流量。</p>
+      <div class="country-rules">
+        <h3>計算規則</h3>
+        <ul>
+          <li>只計<strong>真正免費區</strong>的卡；待實測、付費折扣、已失效不計入總量。</li>
+          <li>只有卡片<strong>明列該國</strong>才計入該國總量。</li>
+          <li>多國卡在明列的每個國家都計入，因為單一國家旅行時可以全數疊加。</li>
+          <li>不做跨國加總，避免重複計算。</li>
+          <li>不限量或降速方案不計入 MB 總量，另行標示。</li>
+          <li>標 <strong>※</strong> 的方案領取時需驗證卡號（不扣款）；各國同時標出不計 ※ 的總量。</li>
+          <li>各卡效期不同，總量是相加結果；實際一趟旅行能用多少，要看各卡效期是否覆蓋整趟行程。</li>
+        </ul>
+      </div>
+      <div id="countryGroups"></div>
+      <p class="country-foot">待實測、付費折扣與已失效方案不在本頁重複列出，請到「優惠」分頁查看這些分區。</p>
+    </div>
+  </section>
+
   <nav class="tabbar" aria-label="主要分頁">
     <button type="button" id="tabOffers" aria-selected="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="8" width="18" height="4"/><path d="M12 8v13M5 12v9h14v-9M12 8s-4.6.2-4.6-2.3C7.4 3.4 12 3.4 12 8Zm0 0s4.6.2 4.6-2.3C16.6 3.4 12 3.4 12 8Z"/></svg>
       優惠
+    </button>
+    <button type="button" id="tabCountry" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20ZM2 12h20"/></svg>
+      國家
     </button>
     <button type="button" id="tabCollection" aria-selected="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"/></svg>
@@ -1530,6 +1608,7 @@
       }
       function markCollected() {
         tiles.forEach(function (t) { t.el.classList.toggle('collected', isCollected(t.name)); });
+        (countryRows || []).forEach(function (r) { r.el.classList.toggle('collected', isCollected(r.item.name)); });
       }
       function render() {
         grid.textContent = '';
@@ -1565,7 +1644,9 @@
       var listEls = [document.getElementById('appHead'), document.getElementById('filtersBar'), mainEl, document.querySelector('footer')];
       var viewDetail = document.getElementById('viewDetail');
       var viewCollection = document.getElementById('viewCollection');
+      var viewCountry = document.getElementById('viewCountry');
       var tabOffers = document.getElementById('tabOffers');
+      var tabCountry = document.getElementById('tabCountry');
       var tabCollection = document.getElementById('tabCollection');
       var currentView = 'list';
       var returnView = 'list';
@@ -1577,8 +1658,10 @@
         currentView = v;
         listEls.forEach(function (el) { if (el) el.hidden = (v !== 'list'); });
         viewCollection.hidden = (v !== 'collection');
+        viewCountry.hidden = (v !== 'country');
         viewDetail.hidden = (v !== 'detail');
         tabOffers.setAttribute('aria-selected', v === 'list' || (v === 'detail' && returnView === 'list') ? 'true' : 'false');
+        tabCountry.setAttribute('aria-selected', v === 'country' || (v === 'detail' && returnView === 'country') ? 'true' : 'false');
         tabCollection.setAttribute('aria-selected', v === 'collection' || (v === 'detail' && returnView === 'collection') ? 'true' : 'false');
         window.scrollTo(0, 0);
       }
@@ -1650,7 +1733,7 @@
         showView('detail');
       }
       document.getElementById('backBtn').addEventListener('click', function () {
-        showView(returnView === 'collection' ? 'collection' : 'list');
+        showView(returnView === 'collection' ? 'collection' : returnView === 'country' ? 'country' : 'list');
         if (returnView === 'collection') renderCollection();
       });
       collectBtn.addEventListener('click', function () {
@@ -1680,7 +1763,167 @@
         });
       }
       tabOffers.addEventListener('click', function () { showView('list'); });
+      tabCountry.addEventListener('click', function () { showView('country'); });
       tabCollection.addEventListener('click', function () { renderCollection(); showView('collection'); });
+
+      /* ---------- 國家頁（依國家疊加真正免費流量） ---------- */
+      var COUNTRIES = [
+        { name: '日本', total: '19.2GB', noStar: '9.2GB', rows: [
+          ['Red Bull MOBILE eSIM', '1.1GB', '新戶 100MB＋1GB 優惠碼'],
+          ['WG FREE SIM', '500MB', '高速用完後降速 200Kbps 不限量，不限量部分不計'],
+          ['MaaltalkNow 免費迎新 eSIM', '1GB', '啟用後 7 天'],
+          ['co:sim 日本 eSIM', '1GB', '啟用後 7 天'],
+          ['Kolet', '1GB', '落地起 48 小時'],
+          ['Nomad eSIM', '1GB', '效期 3 天'],
+          ['Firsty Free', '不限量低速', '不計入總量 · 每 59 分鐘看廣告續用'],
+          ['Roamless', '約 2GB', '餘額永不過期'],
+          ['Roami 免費試用', '100MB', '啟用後 7 天'],
+          ['Yoho Mobile', '500MB', '30 天'],
+          ['Travelgoogoo × Visa', '※ 最高 4GB', 'Infinite 2GB 全球＋2GB 亞太，Signature 1GB＋1GB，Platinum 1GB 全球'],
+          ['Flexiroam × Mastercard', '※ 最高 3GB', 'World Elite 3GB，World 卡 1GB，效期 15 天'],
+          ['Eskimo.Travel', '1GB', '效期 2 年'],
+          ['GigSky × Visa', '※ 最高 3GB', 'Signature 1GB，Infinite 3GB，效期 15 天']
+        ], note: '全球通用區的 Jetpac Eterna（100MB／每趟＋指定 App 無限用）與 GigSky App（100MB）出遊日本時也可再疊加，未計入總量。' },
+        { name: '台灣', total: '13.1GB', noStar: '6.1GB', rows: [
+          ['Red Bull MOBILE eSIM', '1.1GB', '新戶 100MB＋1GB 優惠碼'],
+          ['MaaltalkNow 免費迎新 eSIM', '1GB', '啟用後 7 天'],
+          ['Nomad eSIM', '1GB', '效期 3 天'],
+          ['Roamless', '約 2GB', '餘額永不過期'],
+          ['Travelgoogoo × Visa', '※ 最高 4GB', 'Infinite 2GB 全球＋2GB 亞太，Signature 1GB＋1GB，Platinum 1GB 全球'],
+          ['Flexiroam × Mastercard', '※ 最高 3GB', 'World Elite 3GB，World 卡 1GB，效期 15 天'],
+          ['Eskimo.Travel', '1GB', '效期 2 年']
+        ] },
+        { name: '韓國', total: '9.2GB', noStar: '6.2GB', rows: [
+          ['Red Bull MOBILE eSIM', '1.1GB', '新戶 100MB＋1GB 優惠碼'],
+          ['MaaltalkNow 免費迎新 eSIM', '1GB', '啟用後 7 天'],
+          ['Nomad eSIM', '1GB', '效期 3 天'],
+          ['Roamless', '約 2GB', '餘額永不過期'],
+          ['Roami 免費試用', '100MB', '啟用後 7 天'],
+          ['Flexiroam × Mastercard', '※ 最高 3GB', 'World Elite 3GB，World 卡 1GB，效期 15 天'],
+          ['Eskimo.Travel', '1GB', '效期 2 年']
+        ] },
+        { name: '泰國', total: '5.2GB', noStar: '2.2GB', rows: [
+          ['Red Bull MOBILE eSIM', '1.1GB', '新戶 100MB＋1GB 優惠碼'],
+          ['MaaltalkNow 免費迎新 eSIM', '1GB', '啟用後 7 天'],
+          ['Roami 免費試用', '100MB', '啟用後 7 天'],
+          ['Flexiroam × Mastercard', '※ 最高 3GB', 'World Elite 3GB，World 卡 1GB，效期 15 天'],
+          ['Travelgoogoo × Visa 泰國', '不限流量', '不計入總量 · 實測約 2GB 後降速']
+        ] },
+        { name: '新加坡', total: '4.1GB', noStar: '1.1GB', rows: [
+          ['Nomad eSIM', '1GB', '效期 3 天'],
+          ['Roami 免費試用', '100MB', '啟用後 7 天'],
+          ['Flexiroam × Mastercard', '※ 最高 3GB', 'World Elite 3GB，World 卡 1GB，效期 15 天']
+        ] },
+        { name: '香港', total: '3.2GB', noStar: '', rows: [
+          ['Red Bull MOBILE eSIM', '1.1GB', '新戶 100MB＋1GB 優惠碼'],
+          ['Nomad eSIM', '1GB', '效期 3 天'],
+          ['Roami 免費試用', '100MB', '啟用後 7 天'],
+          ['Eskimo.Travel', '1GB', '效期 2 年']
+        ] },
+        { name: '馬來西亞', total: '100.1GB', noStar: '', rows: [
+          ['Roami 免費試用', '100MB', '啟用後 7 天'],
+          ['U Mobile ULTRA5G 遊客 eSIM', '100GB', '24 小時 · 需親自到機場掃碼，護照加人臉驗證']
+        ] },
+        { name: '中國', total: '0.1GB', noStar: '', rows: [
+          ['Roami 免費試用', '100MB', '啟用後 7 天']
+        ] },
+        { name: '全球通用與未明列國家', total: '', noStar: '', desc: '出遊時可再疊加，不計入各國總量', rows: [
+          ['Jetpac Eterna', '100MB／每趟', '指定 App 無限用'],
+          ['GigSky App', '100MB', '迎新'],
+          ['Pelago × 新航 × Frewie', '2GB', '3 天 · 需 KrisFlyer 會員並綁定未來新航或 Scoot 航班訂位，卡片未明列可用國家'],
+          ['GoMoWorld', '1GB', '試用 · 免費僅限部分目的地，日本是否可用未公開']
+        ] }
+      ];
+      var CHEVRON_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
+      var countryRows = [];
+      var countryGroups = document.getElementById('countryGroups');
+      function tileByName(name) {
+        for (var i = 0; i < tiles.length; i++) if (tiles[i].name === name) return tiles[i];
+        return null;
+      }
+      COUNTRIES.forEach(function (c) {
+        var group = document.createElement('div');
+        group.className = 'country-group';
+        var head = document.createElement('div');
+        head.className = 'country-head';
+        var h3 = document.createElement('h3');
+        h3.textContent = c.name;
+        head.appendChild(h3);
+        var total = document.createElement('span');
+        total.className = 'country-total';
+        if (c.total) {
+          total.appendChild(document.createTextNode('可疊加 '));
+          var b = document.createElement('b');
+          b.textContent = c.total;
+          total.appendChild(b);
+          if (c.noStar) total.appendChild(document.createTextNode(' · 不計 ※ 為 ' + c.noStar));
+        } else if (c.desc) {
+          total.textContent = c.desc;
+        }
+        head.appendChild(total);
+        group.appendChild(head);
+        var list = document.createElement('div');
+        list.className = 'crow-list';
+        c.rows.forEach(function (r) {
+          var item = tileByName(r[0]);
+          if (!item) return;
+          var row = document.createElement('button');
+          row.type = 'button';
+          row.className = 'crow';
+          var iconWrap = document.createElement('span');
+          iconWrap.className = 'crow-icon';
+          var icon = document.createElement('span');
+          icon.className = 'tile-icon';
+          icon.setAttribute('aria-hidden', 'true');
+          if (item.iconSrc) {
+            icon.classList.add('has-app-icon');
+            var img = document.createElement('img');
+            img.src = item.iconSrc;
+            img.alt = '';
+            img.loading = 'lazy';
+            icon.appendChild(img);
+          } else {
+            icon.style.background = item.color;
+            icon.textContent = item.initial;
+          }
+          var check = document.createElement('span');
+          check.className = 'tile-check';
+          check.setAttribute('aria-hidden', 'true');
+          check.innerHTML = CHECK_SVG;
+          iconWrap.appendChild(icon);
+          iconWrap.appendChild(check);
+          var main2 = document.createElement('span');
+          main2.className = 'crow-main';
+          var nm = document.createElement('span');
+          nm.className = 'crow-name';
+          nm.textContent = item.name;
+          var meta = document.createElement('span');
+          meta.className = 'crow-meta';
+          meta.textContent = r[2];
+          main2.appendChild(nm);
+          main2.appendChild(meta);
+          var data = document.createElement('span');
+          data.className = 'crow-data';
+          data.textContent = r[1];
+          row.appendChild(iconWrap);
+          row.appendChild(main2);
+          row.appendChild(data);
+          row.insertAdjacentHTML('beforeend', CHEVRON_SVG);
+          (function (it) {
+            row.addEventListener('click', function () { openDetail(it); });
+          })(item);
+          countryRows.push({ el: row, item: item });
+          list.appendChild(row);
+        });
+        group.appendChild(list);
+        if (c.note) {
+          var note = document.createElement('p');
+          note.className = 'country-note';
+          note.textContent = c.note;
+          group.appendChild(note);
+        }
+        countryGroups.appendChild(group);
+      });
 
       /* ---------- 複製優惠碼（事件委派，詳情內也可用） ---------- */
       document.addEventListener('click', function (e) {
@@ -1716,7 +1959,5 @@
     }());
 
   </script>
-<script data-goatcounter="https://nicktwtw.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-</body>
+<script data-goatcounter="https://nicktwtw.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body>
 </html>
